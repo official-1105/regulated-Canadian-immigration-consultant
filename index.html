@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- 7 দিন পর Google Index করতে চাইলে এই লাইনটা মুছে দিবেন -->
+<meta name="robots" content="noindex, nofollow">
+<title>Global Visa Solution - Trusted Visa Consultancy BD</title>
+<meta name="description" content="Canada, Australia, UK, USA ভিসা প্রসেসিং। 10 বছরের অভিজ্ঞতা। 98% সাকসেস রেট। ফ্রি অ্যাসেসমেন্ট।">
+<link rel="icon" type="image/png" href="https://i.imgur.com/8QfQK3a.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --primary: #0052cc; --primary-dark: #003e9c; --accent: #ff6b35;
+    --success: #00875a; --dark: #172b4d; --light: #f4f5f7; --white: #ffffff;
+    --gray: #6b778c;
+  }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { 
+    font-family: 'Hind Siliguri', sans-serif; 
+    background: var(--white); 
+    color: var(--dark); 
+    line-height: 1.6; 
+    overflow-x: hidden;
+  }
+  
+  /* 1. Splash Screen */
+  #splash {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100vh; 
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    z-index: 9999; display: flex; align-items: center; justify-content: center; flex-direction: column;
+    animation: fadeOut 0.5s ease-in-out 2s forwards;
+  }
+  #splash img { width: 180px; animation: zoomIn 1s ease; }
+  #splash h2 { color: white; margin-top: 20px; font-size: 28px; animation: slideUp 1s ease 0.3s backwards; }
+  @keyframes zoomIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
+  @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* 2. Header */
+  header {
+    background: var(--white); box-shadow: 0 2px 10px rgba(0,0,0,0.08); 
+    position: sticky; top: 0; z-index: 1000;
+  }
+  .top-bar {
+    background: var(--primary-dark); color: white; padding: 10px 5%;
+    display: flex; justify-content: space-between; align-items: center; font-size: 14px; flex-wrap: wrap;
+  }
+  .top-bar-contact { display: flex; gap: 20px; flex-wrap: wrap; }
+  .top-bar-contact a { color: white; text-decoration: none; transition: 0.3s; }
+  .top-bar-contact a:hover { color: var(--accent); }
+  .social-icons { display: flex; gap: 15px; }
+  .social-icons a { color: white; font-size: 16px; transition: 0.3s; }
+  .social-icons a:hover { color: var(--accent); transform: scale(1.2); }
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; }
+  .logo { font-size: 26px; font-weight: 700; color: var(--primary); }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 30px; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; transition: 0.3s; }
+  .nav-links a:hover { color: var(--primary); }
+  .mobile-menu { display: none; font-size: 24px; cursor: pointer; }
+
+  /* 3. Hero */
+  .hero {
+    background: linear-gradient(rgba(0,82,204,0.85), rgba(0,62,156,0.85)), url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2074') center/cover;
+    color: white; text-align: center; padding: 140px 5% 100px;
+  }
+  .hero h1 { font-size: 48px; margin-bottom: 20px; animation: slideUp 1s ease; }
+  .hero p { font-size: 18px; max-width: 650px; margin: 0 auto 35px; animation: slideUp 1s ease 0.2s backwards; }
+  .btn {
+    display: inline-block; background: var(--accent); color: white; padding: 16px 40px;
+    border-radius: 50px; text-decoration: none; font-weight: 700; transition: 0.3s;
+    animation: slideUp 1s ease 0.4s backwards; box-shadow: 0 10px 25px rgba(255,107,53,0.3);
+  }
+  .btn:hover { background: #ff5722; transform: translateY(-3px); }
+
+  /* 4. Section General */
+  .section { padding: 90px 5%; }
+  .section-title { text-align: center; margin-bottom: 60px; }
+  .section-title h2 { font-size: 38px; color: var(--dark); margin-bottom: 12px; }
+  .section-title p { color: var(--gray); font-size: 17px; max-width: 600px; margin: 0 auto; }
+
+  /* 5. Reviews */
+  .reviews-container {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;
+  }
+  .review-card {
+    background: var(--white); padding: 30px; border-radius: 16px; box-shadow: 0 5px 25px rgba(0,0,0,0.06);
+    border-left: 4px solid var(--primary); opacity: 0; transform: translateY(40px);
+    transition: all 0.6s ease;
+  }
+  .review-card.show { opacity: 1; transform: translateY(0); }
+  .review-stars { color: #ffc400; margin-bottom: 15px; font-size: 14px; }
+  .review-text { font-style: italic; margin-bottom: 15px; color: #42526e; line-height: 1.7; }
+  .review-author { font-weight: 700; color: var(--primary-dark); display: flex; align-items: center; gap: 10px; }
+  .review-author img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
+
+  /* 6. Visa Process */
+  .visa-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
+  }
+  .visa-card {
+    background: var(--white); padding: 35px; border-radius: 16px; text-align: center;
+    transition: 0.4s; border: 2px solid #e9f2ff; box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+  }
+  .visa-card:hover { transform: translateY(-12px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(0,82,204,0.15); }
+  .visa-card img { width: 90px; height: 90px; border-radius: 50%; margin-bottom: 20px; object-fit: cover; border: 3px solid var(--light); }
+  .visa-card h3 { font-size: 24px; margin-bottom: 18px; color: var(--primary-dark); }
+  .visa-info { text-align: left; margin-bottom: 25px; }
+  .visa-info li { list-style: none; margin-bottom: 10px; display: flex; align-items: flex-start; gap: 10px; font-size: 15px; }
+  .visa-info i { color: var(--success); margin-top: 3px; }
+
+  /* 7. Success Counter */
+  .counter-section { background: var(--primary-dark); color: white; }
+  .counter-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; text-align: center;
+  }
+  .counter-item h3 { font-size: 52px; color: var(--accent); margin-bottom: 10px; font-weight: 700; }
+  .counter-item p { font-size: 18px; opacity: 0.9; }
+
+  /* 8. Contact Form */
+  .form-container { max-width: 750px; margin: 0 auto; background: var(--white); padding: 45px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .form-group { margin-bottom: 20px; }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 15px; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; padding: 15px; border: 2px solid #dfe1e6; border-radius: 10px; font-size: 15px;
+    font-family: 'Hind Siliguri', sans-serif; transition: 0.3s;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(0,82,204,0.1);
+  }
+  .file-note { font-size: 12px; color: var(--gray); margin-top: 5px; }
+  .submit-btn {
+    width: 100%; background: var(--success); color: white; padding: 17px; border: none;
+    border-radius: 10px; font-size: 17px; font-weight: 700; cursor: pointer; transition: 0.3s;
+  }
+  .submit-btn:hover { background: #006644; transform: translateY(-2px); }
+
+  /* 9. Footer */
+  footer { background: var(--dark); color: white; padding: 50px 5% 30px; }
+  .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; text-align: left; }
+  .footer-col h4 { font-size: 18px; margin-bottom: 20px; color: var(--accent); }
+  .footer-col p, .footer-col a { color: #b3bac5; text-decoration: none; margin-bottom: 10px; display: block; transition: 0.3s; }
+  .footer-col a:hover { color: white; }
+  .footer-bottom { border-top: 1px solid #2c3e50; padding-top: 25px; text-align: center; font-size: 14px; color: #b3bac5; }
+  
+  /* 10. Chatbot */
+  #chatbot { position: fixed; bottom: 25px; right: 25px; z-index: 1001; }
+  #chatbot-btn {
+    width: 65px; height: 65px; background: var(--accent); border-radius: 50%; border: none;
+    color: white; font-size: 30px; cursor: pointer; box-shadow: 0 8px 20px rgba(255,107,53,0.4);
+    animation: pulse 2s infinite; transition: 0.3s;
+  }
+  #chatbot-btn:hover { transform: scale(1.1); }
+  @keyframes pulse { 0% { box-shadow: 0 0 rgba(255,107,53,0.7); } 70% { box-shadow: 0 0 0 20px rgba(255,107,53,0); } 100% { box-shadow: 0 0 0 0 rgba(255,107,53,0); } }
+  #chat-window {
+    display: none; width: 370px; height: 500px; background: white; border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25); position: absolute; bottom: 85px; right: 0;
+    flex-direction: column; overflow: hidden;
+  }
+  #chat-header { background: var(--primary); color: white; padding: 18px; font-weight: 700; font-size: 16px; }
+  #chat-body { flex-grow: 1; padding: 15px; overflow-y: auto; background: #f8f9ff; }
+  .chat-msg { margin-bottom: 12px; padding: 12px; border-radius: 12px; max-width: 85%; line-height: 1.5; }
+  .bot-msg { background: white; align-self: flex-start; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+  .user-msg { background: var(--primary); color: white; align-self: flex-end; margin-left: auto; }
+  #chat-input { display: flex; border-top: 1px solid #dfe1e6; padding: 10px; background: white; }
+  #chat-input input { flex-grow: 1; border: none; padding: 10px; font-size: 15px; }
+  #chat-input input:focus { outline: none; }
+  #chat-input button { background: var(--primary); color: white; border: none; padding: 0 18px; border-radius: 8px; cursor: pointer; }
+
+  @media (max-width: 992px) {
+    .nav-links { display: none; }
+    .mobile-menu { display: block; }
+    .hero h1 { font-size: 36px; }
+    .form-grid { grid-template-columns: 1fr; }
+    .top-bar { justify-content: center; gap: 15px; }
+    #chat-window { width: 90vw; right: -10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 1. Splash Screen -->
+<div id="splash">
+  <img src="https://i.imgur.com/8QfQK3a.png" alt="Global Visa Solution">
+  <h2>Global Visa Solution</h2>
+</div>
+
+<!-- 2. Header -->
+<header>
+  <div class="top-bar">
+    <div class="top-bar-contact">
+      <a href="tel:+1-437-555-0123"><i class="fas fa-phone"></i> +1 (437) 555-0123</a>
+      <a href="tel:+1-647-555-0199"><i class="fas fa-phone"></i> +1 (647) 555-0199</a>
+      <span><i class="fas fa-user-tie"></i> Abdur Rahman, Consultant</span>
+    </div>
+    <div class="social-icons">
+      <a href="https://facebook.com/yourpage" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="https://youtube.com/yourchannel" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="https://instagram.com/yourprofile" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/14375550123" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </div>
+  <nav>
+    <div class="logo">Global<span>Visa</span></div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#visa">Visa Process</a></li>
+      <li><a href="#success">Success</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="mobile-menu"><i class="fas fa-bars"></i></div>
+  </nav>
+</header>
+
+<!-- 3. Hero -->
+<section class="hero" id="home">
+  <h1>আপনার স্বপ্নের দেশে যাওয়ার বিশ্বস্ত সঙ্গী</h1>
+  <p>কানাডা, অস্ট্রেলিয়া, UK, USA সহ 20+ দেশের স্টুডেন্ট, ওয়ার্ক ও টুরিস্ট ভিসা প্রসেসিং। 10 বছরের অভিজ্ঞতা ও 98% সাকসেস রেট।</p>
+  <a href="#contact" class="btn">Free Assessment <i class="fas fa-arrow-right"></i></a>
+</section>
+
+<!-- 4. Reviews -->
+<section class="section" id="reviews">
+  <div class="section-title">
+    <h2>আমাদের ক্লায়েন্টদের অভিজ্ঞতা</h2>
+    <p>2500+ সফল ক্লায়েন্টের মধ্যে কয়েকজনের মতামত</p>
+  </div>
+  <div class="reviews-container" id="reviewsContainer"></div>
+</section>
+
+<!-- 5. Visa Process -->
+<section class="section" id="visa" style="background: var(--light);">
+  <div class="section-title">
+    <h2>জনপ্রিয় ভিসা প্রসেসিং সার্ভিস</h2>
+    <p>আনুমানিক সময়, সার্ভিস চার্জ এবং প্রয়োজনীয় যোগ্যতা</p>
+  </div>
+  <div class="visa-grid">
+    <div class="visa-card">
+      <img src="https://flagcdn.com/ca.svg" alt="Canada">
+      <h3>Canada Student Visa</h3>
+      <ul class="visa-info">
+        <li><i class="fas fa-clock"></i> <strong>সময়:</strong> 45-60 কর্মদিবস</li>
+        <li><i class="fas fa-dollar-sign"></i> <strong>সার্ভিস চার্জ:</strong> 15,000 BDT</li>
+        <li><i class="fas fa-graduation-cap"></i> <strong>যোগ্যতা:</strong> IELTS 6.0, HSC/Graduate</li>
+        <li><i class="fas fa-file-alt"></i> <strong>ডকুমেন্ট:</strong> Bank Statement, Offer Letter</li>
+      </ul>
+    </div>
+    <div class="visa-card">
+      <img src="https://flagcdn.com/au.svg" alt="Australia">
+      <h3>Australia Work Visa</h3>
+      <ul class="visa-info">
+        <li><i class="fas fa-clock"></i> <strong>সময়:</strong> 60-90 কর্মদিবস</li>
+        <li><i class="fas fa-dollar-sign"></i> <strong>সার্ভিস চার্জ:</strong> 25,000 BDT</li>
+        <li><i class="fas fa-briefcase"></i> <strong>যোগ্যতা:</strong> Skills Assessment, PTE 65</li>
+        <li><i class="fas fa-file-alt"></i> <strong>ডকুমেন্ট:</strong> Experience Letter, CV</li>
+      </ul>
+    </div>
+    <div class="visa-card">
+      <img src="https://flagcdn.com/gb.svg" alt="UK">
+      <h3>UK Tourist Visa</h3>
+      <ul class="visa-info">
+        <li><i class="fas fa-clock"></i> <strong>সময়:</strong> 15-20 কর্মদিবস</li>
+        <li><i class="fas fa-dollar-sign"></i> <strong>সার্ভিস চার্জ:</strong> 12,000 BDT</li>
+        <li><i class="fas fa-plane"></i> <strong>যোগ্যতা:</strong> Strong Bank Solvency</li>
+        <li><i class="fas fa-file-alt"></i> <strong>ডকুমেন্ট:</strong> Hotel Booking, Itinerary</li>
+      </ul>
+    </div>
+    <div class="visa-card">
+      <img src="https://flagcdn.com/us.svg" alt="USA">
+      <h3>USA B1/B2 Visa</h3>
+      <ul class="visa-info">
+        <li><i class="fas fa-clock"></i> <strong>সময়:</strong> 30-45 কর্মদিবস</li>
+        <li><i class="fas fa-dollar-sign"></i> <strong>সার্ভিস চার্জ:</strong> 18,000 BDT</li>
+        <li><i class="fas fa-comments"></i> <strong>যোগ্যতা:</strong> Interview Preparation</li>
+        <li><i class="fas fa-file-alt"></i> <strong>ডকুমেন্ট:</strong> DS-160, Invitation Letter</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Success Counter -->
+<section class="section counter-section" id="success">
+  <div class="section-title">
+    <h2 style="color: white;">আমাদের 10 বছরের সাফল্য</h2>
+    <p style="color: #dfe1e6;">আপনার বিশ্বাসই আমাদের অনুপ্রেরণা</p>
+  </div>
+  <div class="counter-grid">
+    <div class="counter-item">
+      <h3 data-target="10">0</h3>
+      <p>বছরের অভিজ্ঞতা</p>
+    </div>
+    <div class="counter-item">
+      <h3 data-target="2500">0</h3>
+      <p>সফল ভিসা</p>
+    </div>
+    <div class="counter-item">
+      <h3 data-target="20">0</h3>
+      <p>দেশের সার্ভিস</p>
+    </div>
+    <div class="counter-item">
+      <h3 data-target="98">0</h3>
+      <p>% সাকসেস রেট</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Contact Form -->
+<section class="section" id="contact">
+  <div class="section-title">
+    <h2>ফ্রি অ্যাসেসমেন্টের জন্য আবেদন করুন</h2>
+    <p>ফর্মটি পূরণ করুন। আমাদের এক্সপার্ট টিম 24 ঘন্টার মধ্যে WhatsApp এ যোগাযোগ করবে।</p>
+  </div>
+  <div class="form-container">
+    <form id="visaForm">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Full Name *</label>
+          <input type="text" id="name" placeholder="আপনার পুরো নাম" required>
+        </div>
+        <div class="form-group">
+          <label>Email Address *</label>
+          <input type="email" id="email" placeholder="your@email.com" required>
+        </div>
+        <div class="form-group">
+          <label>Phone Number *</label>
+          <input type="tel" id="phone" placeholder="+880 1XXXXXXXXX" required>
+        </div>
+        <div class="form-group">
+          <label>Current Country *</label>
+          <input type="text" id="country" placeholder="e.g. Bangladesh" required>
+        </div>
+        <div class="form-group full">
+          <label>Which Country Visa? *</label>
+          <select id="visaCountry" required>
+            <option value="">-- Select Country --</option>
+            <option value="Canada Student Visa">Canada - Student Visa</option>
+            <option value="Australia Work Visa">Australia - Work Visa</option>
+            <option value="UK Tourist Visa">UK - Tourist Visa</option>
+            <option value="USA B1/B2 Visa">USA - B1/B2 Visa</option>
+            <option value="Europe Schengen Visa">Europe - Schengen Visa</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label>Your Message / Background</label>
+          <textarea id="message" rows="4" placeholder="আপনার শিক্ষাগত যোগ্যতা, IELTS/PTE স্কোর, কাজের অভিজ্ঞতা ইত্যাদি লিখুন"></textarea>
+        </div>
+        <div class="form-group full">
+          <label>Upload Documents (PDF Only)</label>
+          <input type="file" id="pdfFile" accept=".pdf">
+          <p class="file-note">Note: PDF সরাসরি WhatsApp এ যাবে না। সাবমিটের পর আমাদের নাম্বারে PDF পাঠাবেন।</p>
+        </div>
+      </div>
+      <button type="submit" class="submit-btn"><i class="fab fa-whatsapp"></i> Submit via WhatsApp</button>
+    </form>
+  </div>
+</section>
+
+<!-- 8. Footer -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Global Visa Solution</h4>
+      <p>10 বছরের অভিজ্ঞতা সম্পন্ন বিশ্বস্ত ভিসা কনসালটেন্সি ফার্ম। আমরা স্টুডেন্ট, ওয়ার্ক ও টুরিস্ট ভিসা প্রসেসিং এ সাহায্য করি।</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="#home">Home</a>
+      <a href="#visa">Visa Services</a>
+      <a href="#success">Our Success</a>
+      <a href="#contact">Free Assessment</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <p><i class="fas fa-map-marker-alt"></i> House 12, Road 5, Banani, Dhaka</p>
+      <p><i class="fas fa-phone"></i> +1 (437) 555-0123 (Canada)</p>
+      <p><i class="fas fa-envelope"></i> info@globalvisabd.com</p>
+    </div>
+    <div class="footer-col">
+      <h4>Follow Us</h4>
+      <div class="social-icons" style="justify-content: flex-start;">
+        <a href="https://facebook.com/yourpage" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://youtube.com/yourchannel" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://instagram.com/yourprofile" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/14375550123" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Global Visa Solution. All Rights Reserved.</p>
+    <p style="font-size: 12px; opacity: 0.7; margin-top: 8px;">Disclaimer: We are a private consultancy firm and not affiliated with any government or embassy. Visa approval is subject to embassy decision.</p>
+  </div>
+</footer>
+
+<!-- 9. Chatbot -->
+<div id="chatbot">
+  <div id="chat-window">
+    <div id="chat-header"><i class="fas fa-robot"></i> Visa Support Bot</div>
+    <div id="chat-body">
+      <div class="chat-msg bot-msg">আসসালামু আলাইকুম! আমি আপনার ভিসা সহায়তাকারী বট। 😊<br>কি জানতে চান? যেমন: Canada, Cost, Time, Document</div>
+    </div>
+    <div id="chat-input">
+      <input type="text" id="userInput" placeholder="Type your question...">
+      <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+  <button id="chatbot-btn" onclick="toggleChat()"><i class="fas fa-comments"></i></button>
+</div>
+
+<script>
+  // 1. Splash Screen
+  window.addEventListener('load', () => {
+    setTimeout(() => { document.getElementById('splash').style.display = 'none'; }, 2000);
+  });
+
+  // 2. Mobile Menu
+  document.querySelector('.mobile-menu').addEventListener('click', () => {
+    const nav = document.querySelector('.nav-links');
+    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+  });
+
+  // 3. Reviews Data & Animation
+  const reviews = [
+    { name: "Tanvir Ahmed", text: "আলহামদুলিল্লাহ! কানাডার স্টুডেন্ট ভিসা পেয়েছি। Abdur Rahman ভাই অনেক হেল্পফুল। প্রসেসটা খুবই স্মুথ ছিল।", stars: 5, img: "https://i.pravatar.cc/40?img=1" },
+    { name: "Fatema Akter", text: "অস্ট্রেলিয়ার ভিসা নিয়ে টেনশনে ছিলাম। ওনাদের গাইডলাইনে 2 মাসেই হয়ে গেছে। Highly recommended!", stars: 5, img: "https://i.pravatar.cc/40?img=5" },
+    { name: "Sakib Al Hasan", text: "UK টুরিস্ট ভিসা 15 দিনে পেয়েছি। সার্ভিস খুবই প্রফেশনাল এবং স্বচ্ছ।", stars: 5, img: "https://i.pravatar.cc/40?img=3" },
+    { name: "Nusrat Jahan", text: "USA ভিসা ইন্টারভিউ এর জন্য যেভাবে প্রিপেয়ার করাইছে, সেটা অসাধারণ। ভিসা পেয়ে গেছি!", stars: 5, img: "https://i.pravatar.cc/40?img=9" },
+    { name: "Rahim Uddin", text: "ফাইল প্রসেস ফি অনেক রিজনেবল। কোনো হিডেন চার্জ নাই। যা বলেছে তাই করেছে।", stars: 4, img: "https://i.pravatar.cc/40?img=7" },
+    { name: "Mitu Rahman", text: "Europe Schengen ভিসা নিয়ে ফ্যামিলি সহ ঘুরে আসলাম। থ্যাংক ইউ Global Visa Team!", stars: 5, img: "https://i.pravatar.cc/40?img=6" },
+    { name: "Kamal Hossain", text: "10 বছর ধরে অনেক এজেন্সি দেখছি, এদের মতো ট্রান্সপারেন্ট এবং আন্তরিক কাউকে পাইনি।", stars: 5, img: "https://i.pravatar.cc/40?img=8" },
+    { name: "Ayesha Siddiqua", text: "IELTS ছাড়াও কানাডার কলেজে ভর্তি করায় দিছে। আমি তো অবাক! Best consultancy in BD.", stars: 5, img: "https://i.pravatar.cc/40?img=10" },
+    { name: "Jahid Hasan", text: "আমার একবার রিজেক্ট হওয়া ফাইল ওনারা রিভিউ করে আবার সাবমিট করে ভিসা করায় দিছে।", stars: 5, img: "https://i.pravatar.cc/40?img=11" },
+    { name: "Sumaiya Islam", text: "WhatsApp এ নক দিলেই সাথে সাথে রিপ্লাই পাই। রাত 11টায়ও সাপোর্ট দিছে। সার্ভিস 10/10", stars: 5, img: "https://i.pravatar.cc/40?img=12" },
+  ];
+  const reviewsContainer = document.getElementById('reviewsContainer');
+  reviews.forEach(r => {
+    reviewsContainer.innerHTML += `
+      <div class="review-card">
+        <div class="review-stars">${'<i class="fas fa-star"></i>'.repeat(r.stars)}</div>
+        <p class="review-text">"${r.text}"</p>
+        <div class="review-author"><img src="${r.img}" alt="${r.name}"> ${r.name}</div>
+      </div>
+    `;
+  });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => { entry.target.classList.add('show'); }, index * 100);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.review-card').forEach(card => observer.observe(card));
+
+  // 4. Counter Animation
+  const counters = document.querySelectorAll('.counter-item h3');
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const counter = entry.target;
+        const target = +counter.getAttribute('data-target');
+        let count = 0;
+        const updateCount = () => {
+          const increment = target / 100;
+          if (count < target) {
+            count += increment;
+            counter.innerText = Math.ceil(count);
+            setTimeout(updateCount, 20);
+          } else {
+            counter.innerText = target + (
